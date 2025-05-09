@@ -8,8 +8,8 @@ services:
       - QBT_VERSION=latest
     image: qbittorrentofficial/qbittorrent-nox:latest
     ports:
-      - 6881:6881/tcp
-      - 6881:6881/udp
+      - 6882:6881/tcp
+      - 6882:6881/udp
     read_only: true
     stop_grace_period: 30m
     tmpfs:
