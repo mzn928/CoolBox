@@ -26,7 +26,7 @@ services:
       - DUFS_PASS=${DUFS_PASS}
     volumes:
       - seedbox:/data
-    command: /data -A -a ${DUFS_USER}:${DUFS_PASS}
+    command: /data -A -a ${DUFS_USER}:${DUFS_PASS}@/:rw
 
   sonarr:
     container_name: sonarr
