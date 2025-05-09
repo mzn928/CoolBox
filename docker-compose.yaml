@@ -21,7 +21,6 @@ services:
 
   dufs:
     image: sigoden/dufs
-    ports:
     volumes:
     - seedbox:/data
     command: /data -A
