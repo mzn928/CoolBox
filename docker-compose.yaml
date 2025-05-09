@@ -1,0 +1,57 @@
+services:
+  qbittorrent-nox:
+    container_name: qbt
+    hostname: qbt
+    environment:
+      - QBT_LEGAL_NOTICE=confirm
+      - TZ=Etc/UTC
+      - QBT_VERSION=latest
+    image: qbittorrentofficial/qbittorrent-nox:latest
+    ports:
+      - 6881:6881/tcp
+      - 6881:6881/udp
+    read_only: true
+    stop_grace_period: 30m
+    tmpfs:
+      - /tmp
+    tty: true
+    volumes:
+      - ./cfg:/config
+      - seedbox:/downloads
+
+  dufs:
+    image: sigoden/dufs
+    ports:
+    volumes:
+    - seedbox:/data
+    command: /data -A
+
+  sonarr:
+    container_name: sonarr
+    image: ghcr.io/hotio/sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Etc/UTC
+    volumes:
+      - ./sonarr:/config
+      - seedbox:/data
+
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - AUTO_UPDATE=true #optional
+    volumes:
+      - ./jackett:/config
+      - seedbox:/downloads
+    restart: unless-stopped
+
+volumes:
+  seedbox:
+    driver: local
+
