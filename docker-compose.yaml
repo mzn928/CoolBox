@@ -21,15 +21,11 @@ services:
 
   filebrowser:
     image: filebrowser/filebrowser:latest
-    user: "${UID}:${GID}"
+    user: "0:0"
     volumes:
       - seedbox:/data
       - ./filebrowser/database.db:/config/database.db
       - ./filebrowser/filebrowser.json:/.filebrowser.json
-    environment:
-      - FB_BASEURL=/
-      - FB_USERNAME=${FB_USER}
-      - FB_PASSWORD=${FB_PASS}
     restart: always
 
   sonarr:
