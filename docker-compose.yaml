@@ -20,10 +20,11 @@ services:
       - seedbox:/downloads
 
   filebrowser:
-    image: hurlenko/filebrowser
+    image: filebrowser/filebrowser:latest
     volumes:
       - seedbox:/data
-      - ./filebrowser:/config
+      - ./filebrowser/database.db:/config
+      - ./filebrowser/filebrowser.json:/.filebrowser.json
     environment:
       - FB_BASEURL=/
       - FB_USERNAME=${FB_USER}
