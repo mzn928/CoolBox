@@ -19,14 +19,16 @@ services:
       - ./cfg:/config
       - seedbox:/downloads
 
-  dufs:
-    image: sigoden/dufs
-    environment:
-      - DUFS_USER=${DUFS_USER}
-      - DUFS_PASS=${DUFS_PASS}
+  filebrowser:
+    image: hurlenko/filebrowser
     volumes:
       - seedbox:/data
-    command: /data -A -a ${DUFS_USER}:${DUFS_PASS}@/:rw
+      - ./filebrowser:/config
+    environment:
+      - FB_BASEURL=/
+      - FB_USERNAME=${FB_USER}
+      - FB_PASSWORD=${FB_PASS}
+    restart: always
 
   sonarr:
     container_name: sonarr
