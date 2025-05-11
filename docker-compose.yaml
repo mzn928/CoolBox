@@ -24,7 +24,7 @@ services:
     user: "${UID}:${GID}"
     volumes:
       - seedbox:/data
-      - ./filebrowser/database.db:/config
+      - ./filebrowser/database.db:/config/database.db
       - ./filebrowser/filebrowser.json:/.filebrowser.json
     environment:
       - FB_BASEURL=/
