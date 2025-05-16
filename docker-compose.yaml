@@ -23,7 +23,7 @@ services:
     image: filebrowser/filebrowser:latest
     user: "0:0"
     volumes:
-      - seedbox:/data
+      - seedbox:/downloads/
       - ./filebrowser/database.db:/config/database.db
       - ./filebrowser/filebrowser.json:/.filebrowser.json
     restart: always
