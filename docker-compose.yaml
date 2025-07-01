@@ -53,6 +53,21 @@ services:
       - seedbox:/downloads
     restart: unless-stopped
 
+  web-server:
+    image: nginx:alpine
+    container_name: file-server
+    volumes:
+      - seedbox:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./htpasswd:/etc/nginx/htpasswd
+    restart: unless-stopped
+    environment:
+      - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx
+
+volumes:
+  data:
+
+
 volumes:
   seedbox:
     driver: local
