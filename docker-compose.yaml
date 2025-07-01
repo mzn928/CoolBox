@@ -63,11 +63,6 @@ services:
     restart: unless-stopped
     environment:
       - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx
-
-volumes:
-  data:
-
-
 volumes:
   seedbox:
     driver: local
