@@ -1,4 +1,10 @@
 services:
+  volume-init:
+    image: busybox
+    command: ["sh", "-c", "chmod -R 777 /downloads"]
+    volumes:
+      - seedbox:/downloads
+
   qbittorrent-nox:
     container_name: qbt
     hostname: qbt
