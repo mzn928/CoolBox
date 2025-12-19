@@ -23,7 +23,7 @@ services:
     image: filebrowser/filebrowser:s6
     user: "0:0"
     volumes:
-      - seedbox:/downloads:/srv
+      - seedbox:/srv
       - ./filebrowser:/database
       - ./filebrowser:/config
     restart: always
