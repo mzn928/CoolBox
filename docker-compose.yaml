@@ -18,6 +18,11 @@ services:
     volumes:
       - ./cfg:/config
       - /storage/shared:/downloads
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
 
   filebrowser:
     image: filebrowser/filebrowser:s6
@@ -27,3 +32,8 @@ services:
       - ./filebrowser:/database
       - ./filebrowser:/config
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
