@@ -16,7 +16,7 @@ services:
     tty: true
     volumes:
       - ./cfg:/config
-      - /storage/shared:/downloads
+      - /storage/shared/downloads:/downloads
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/"]
       interval: 1m
