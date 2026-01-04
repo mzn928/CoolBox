@@ -2,7 +2,6 @@ services:
   qbittorrent-nox:
     container_name: qbt
     hostname: qbt
-    user: "0:0"
     environment:
       - QBT_LEGAL_NOTICE=confirm
       - TZ=Etc/UTC
@@ -26,7 +25,6 @@ services:
 
   filebrowser:
     image: filebrowser/filebrowser:s6
-    user: "0:0"
     volumes:
       - seedbox:/downloads:/srv
       - ./filebrowser:/database
