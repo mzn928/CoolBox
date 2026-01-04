@@ -17,39 +17,13 @@ services:
     tty: true
     volumes:
       - ./cfg:/config
-      - seedbox:/downloads
+      - /storage/shared:/downloads
 
   filebrowser:
     image: filebrowser/filebrowser:s6
     user: "0:0"
     volumes:
-      - seedbox:/downloads:/srv
+      - /storage/shared:/srv
       - ./filebrowser:/database
       - ./filebrowser:/config
     restart: always
-
-  # sonarr:
-  #   container_name: sonarr
-  #   image: ghcr.io/hotio/sonarr
-  #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
-  #     - UMASK=002
-  #     - TZ=Etc/UTC
-  #   volumes:
-  #     - ./sonarr:/config
-  #     - seedbox:/data
-
-  # jackett:
-  #   image: lscr.io/linuxserver/jackett:latest
-  #   container_name: jackett
-  #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
-  #     - TZ=Etc/UTC
-  #     - AUTO_UPDATE=true #optional
-  #   volumes:
-  #     - ./jackett:/config
-  #     - seedbox:/downloads
-  #   restart: unless-stopped
-
