@@ -35,3 +35,9 @@ services:
       interval: 1m
       timeout: 10s
       retries: 3
+
+  dl-server:
+    image: nginx:alpine
+    volumes:
+      - /storage/shared:/usr/share/nginx/html:ro
+    restart: unless-stopped
